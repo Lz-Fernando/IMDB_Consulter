@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="dotenv-java-3.2.0" level="project" />
+    <orderEntry type="library" name="gson-2.13.1" level="project" />
   </component>
 </module>
