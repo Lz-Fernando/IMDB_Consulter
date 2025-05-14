@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -21,7 +20,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         String apiKey = carregarApiKey();
-        String json = buascarDadosDaApi(apiKey);
+        String json = buscarDadosDaApi(apiKey);
         List<Filme> filmes = converterjsonParaLista(json);
 
         exibirFilmes(filmes);
@@ -35,7 +34,7 @@ public class Main {
         return apiKey;
     }
 
-    private static String buascarDadosDaApi(String apiKey) {
+    private static String buscarDadosDaApi(String apiKey) {
         String json;
 
         try {
@@ -67,7 +66,7 @@ public class Main {
 
     private static void exibirFilmes(List<Filme> filmes) {
         for (Filme f : filmes) {
-            System.out.println(f.getTitle());
+            System.out.println(f.title());
         }
     }
 }
