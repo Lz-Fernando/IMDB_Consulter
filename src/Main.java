@@ -2,6 +2,7 @@ package src;
 
 import java.io.IOException;
 
+import java.io.PrintWriter;
 import java.lang.reflect.Type;
 
 import java.net.URI;
@@ -65,8 +66,11 @@ public class Main {
     }
 
     private static void exibirFilmes(List<Filme> filmes) {
-        for (Filme f : filmes) {
-            System.out.println(f.title());
+        try (PrintWriter writer = new PrintWriter("filmes.html")) {
+            HTMLgenerator generator = new HTMLgenerator(writer);
+            generator.generate(filmes);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
