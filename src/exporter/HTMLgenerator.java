@@ -1,4 +1,6 @@
-package src;
+package src.exporter;
+
+import src.model.Filme;
 
 import java.io.IOException;
 import java.io.Writer;
