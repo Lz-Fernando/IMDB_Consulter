@@ -1,22 +1,23 @@
 package src.main;
 
-import src.model.Filme;
-import src.parser.JsonParser;
-import src.api.APICliente;
+import src.api.APIClient;
+import src.api.ImdbApiClient;
 import src.exporter.HTMLExporter;
+import src.model.Content;
+import src.parser.ImdbFilmeJsonParser;
 
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        APICliente apiCliente = new APICliente();
-        String apiKey = APICliente.carregarApiKey();
-        String json = apiCliente.buscarDadosDaApi(apiKey);
+    public static void main(String[] args) throws Exception {
+        APIClient apiClient = new ImdbApiClient();
+        String apiKey = ImdbApiClient.carregarApiKey();
+        String json = apiClient.getBody(apiKey);
 
-        JsonParser jsonParser = new JsonParser();
-        List<Filme> filmes = jsonParser.converterJsonParaLista(json);
+        ImdbFilmeJsonParser jsonParser = new ImdbFilmeJsonParser();
+        List<? extends Content> contents = jsonParser.parse(json);
 
         HTMLExporter htmlExporter = new HTMLExporter();
-        htmlExporter.exportarParaHtml(filmes, "filmes.html");
+        htmlExporter.exportarParaHtml(contents, "contents.html");
     }
 }

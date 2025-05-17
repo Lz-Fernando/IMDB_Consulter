@@ -8,14 +8,15 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class APICliente {
+public class ImdbApiClient implements APIClient {
     public static String carregarApiKey() {
         Dotenv dotenv = Dotenv.load();
 
         return dotenv.get("RAPIDAPI_KEY");
     }
 
-    public static String buscarDadosDaApi(String apiKey) {
+    @Override
+    public String getBody(String apiKey) {
         try {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("https://imdb-api4.p.rapidapi.com/get_movies_by_name"))

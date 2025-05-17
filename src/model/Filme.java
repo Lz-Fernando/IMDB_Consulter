@@ -1,11 +1,28 @@
 package src.model;
 
-public record Filme(
-        int id,
-        int rank,
-        String title,
-        int year,
-        String director,
-        String cast,
-        float rating
-) {}
+public class Filme implements Content {
+    private String title;
+    private String year;
+    private String rating;
+
+    public Filme(String title, String year, String rating) {
+        this.title = title;
+        this.year = year;
+        this.rating = rating;
+    }
+
+    @Override
+    public String title() {
+        return title;
+    }
+
+    @Override
+    public String rating() {
+        return rating;
+    }
+
+    @Override
+    public String year() {
+        return year;
+    }
+}

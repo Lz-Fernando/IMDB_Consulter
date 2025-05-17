@@ -1,6 +1,6 @@
 package src.exporter;
 
-import src.model.Filme;
+import src.model.Content;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -14,10 +14,10 @@ public class HTMLgenerator {
         this.writer = writer;
     }
 
-    public void generate(List<Filme> filmes) {
+    public void generate(List<? extends Content> contents) {
         try {
             writeHead();
-            writeBody(filmes);
+            writeBody(contents);
             writeFooter();
         } catch (IOException e) {
             throw new RuntimeException("Erro ao gerar o HTML", e);
@@ -38,8 +38,8 @@ public class HTMLgenerator {
         );
     }
 
-    private void writeBody(List<Filme> filmes) throws IOException {
-        for (Filme filme : filmes) {
+    private void writeBody(List<? extends Content> contents) throws IOException {
+        for (Content content : contents) {
             writer.write(String.format(
                 """
                     <body>
@@ -50,7 +50,7 @@ public class HTMLgenerator {
                             </div>
                         </div>
                     </body>
-                """, filme.title(), filme.rating(), filme.year()
+                """, content.title(), content.rating(), content.year()
             ));
         }
 

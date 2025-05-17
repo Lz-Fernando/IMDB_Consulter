@@ -1,15 +1,15 @@
 package src.exporter;
 
-import src.model.Filme;
+import src.model.Content;
 
 import java.io.PrintWriter;
 import java.util.List;
 
 public class HTMLExporter {
-    public void exportarParaHtml(List<Filme> filmes, String caminhoArquivo) {
+    public void exportarParaHtml(List<? extends Content> contents, String caminhoArquivo) {
         try (PrintWriter writer = new PrintWriter(caminhoArquivo)) {
             HTMLgenerator generator = new HTMLgenerator(writer);
-            generator.generate(filmes);
+            generator.generate(contents);
         } catch (Exception e) {
             throw new RuntimeException("Erro ao exportar para HTML", e);
         }
