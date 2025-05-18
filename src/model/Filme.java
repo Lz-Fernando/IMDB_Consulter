@@ -1,6 +1,6 @@
 package src.model;
 
-public class Filme implements Content {
+public class Filme implements Content, Comparable<Content> {
     private String title;
     private String year;
     private String rating;
@@ -24,5 +24,10 @@ public class Filme implements Content {
     @Override
     public String year() {
         return year;
+    }
+
+    @Override
+    public int compareTo(Content outro) {
+        return this.title.compareTo(outro.title());
     }
 }
