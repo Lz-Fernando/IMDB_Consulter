@@ -8,7 +8,7 @@ import java.util.List;
 public class HTMLExporter {
     public void exportarParaHtml(List<? extends Content> contents, String caminhoArquivo) {
         try (PrintWriter writer = new PrintWriter(caminhoArquivo)) {
-            HTMLgenerator generator = new HTMLgenerator(writer);
+            HtmlGenerator generator = new HtmlGenerator(writer);
             generator.generate(contents);
         } catch (Exception e) {
             throw new RuntimeException("Erro ao exportar para HTML", e);

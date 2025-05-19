@@ -20,8 +20,8 @@ public class Main {
         List<? extends Content> contents = jsonParser.parse(json);
 
         Collections.sort((List<Filme>) contents);
-        Collections.sort((List<Filme>) contents, Collections.reverseOrder());
-        
+        contents.sort(Collections.reverseOrder());
+
         HTMLExporter htmlExporter = new HTMLExporter();
         htmlExporter.exportarParaHtml(contents, "contents.html");
     }

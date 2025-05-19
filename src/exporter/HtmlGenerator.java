@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
-public class HTMLgenerator {
+public class HtmlGenerator {
 
     private final Writer writer;
 
-    public HTMLgenerator(Writer writer) {
+    public HtmlGenerator(Writer writer) {
         this.writer = writer;
     }
 
